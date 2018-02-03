@@ -667,8 +667,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
 
-/*    case adventurer:
-      while(drawntreasure<2){
+    case adventurer:
+/*      while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -688,8 +688,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       }
       return 0;
 */			
-/*    case council_room:
-      //+4 Cards
+    case council_room:
+/*      //+4 Cards
       for (i = 0; i < 4; i++)
 	{
 	  drawCard(currentPlayer, state);
@@ -766,8 +766,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       			
       return 0;
 			
-    /*case gardens:
-      return -1;
+    case gardens:
+/*      return -1;
 	*/
 			
     case mine:
@@ -831,8 +831,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
       return 0;
 		
-/*    case smithy:
-      //+3 Cards
+    case smithy:
+/*      //+3 Cards
       for (i = 0; i < 3; i++)
 	{
 	  drawCard(currentPlayer, state);
@@ -1159,8 +1159,8 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       discardCard(handPos, currentPlayer, state, 1);		
       return 0;
 		
-/*    case outpost:
-      //set outpost flag
+    case outpost:
+/*      //set outpost flag
       state->outpostPlayed++;
 			
       //discard card
@@ -1224,7 +1224,9 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       //no second treasure_map found in hand
       return -1;
     }
-	
+
+	return -1;
+}	
 	//This is added for assignment 2
 void adventurer(struct gameState *stae, int currentPlayer, int drawntreasure)
 { 
@@ -1305,9 +1307,6 @@ void gardens(struct gameState *state, int currentPlayer, int handPos)
 	return -1;
 }
 
-	
-  return -1;
-}
 
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
