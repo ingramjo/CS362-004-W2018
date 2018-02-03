@@ -668,6 +668,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     {
 
     case adventurer:
+	void adventurer(struct gameState *stae, int currentPlayer, int drawntreasure)
 /*      while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
@@ -689,6 +690,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 */			
     case council_room:
+	void council_room(struct gameState *stae, int currentPlayer, int handpos)
 /*      //+4 Cards
       for (i = 0; i < 4; i++)
 	{
@@ -767,6 +769,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case gardens:
+	void gardens(struct gameState *stae, int currentPlayer, int handpos)
 /*      return -1;
 	*/
 			
@@ -832,6 +835,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
+	void smithy(struct gameState *stae, int currentPlayer, int handpos)
 /*      //+3 Cards
       for (i = 0; i < 3; i++)
 	{
@@ -1160,6 +1164,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case outpost:
+	void outpost(struct gameState *stae, int currentPlayer, int handpos)
 /*      //set outpost flag
       state->outpostPlayed++;
 			
