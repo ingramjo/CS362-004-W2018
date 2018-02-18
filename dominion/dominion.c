@@ -668,7 +668,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
     {
 
     case adventurer:
-	void adventurer(struct gameState *stae, int currentPlayer, int drawntreasure)
+	return adventurer_play(state, currentPlayer)
 /*      while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
@@ -690,7 +690,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 */			
     case council_room:
-	void council_room(struct gameState *stae, int currentPlayer, int handpos)
+	return council_room_play(state, currentPlayer, handpos)
 /*      //+4 Cards
       for (i = 0; i < 4; i++)
 	{
@@ -769,7 +769,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 			
     case gardens:
-	void gardens(struct gameState *stae, int currentPlayer, int handpos)
+	return gardens_play(state, currentPlayer, handpos)
 /*      return -1;
 	*/
 			
@@ -835,7 +835,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case smithy:
-	void smithy(struct gameState *stae, int currentPlayer, int handpos)
+	return smithy_play(state, currentPlayer, handpos)
 /*      //+3 Cards
       for (i = 0; i < 3; i++)
 	{
@@ -1164,7 +1164,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case outpost:
-	void outpost(struct gameState *stae, int currentPlayer, int handpos)
+	return outpost_play(state, currentPlayer, handpos)
 /*      //set outpost flag
       state->outpostPlayed++;
 			
@@ -1233,8 +1233,13 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	return -1;
 }	
 	//This is added for assignment 2
-void adventurer(struct gameState *stae, int currentPlayer, int drawntreasure)
+void adventurer_play(struct gameState *state, int currentPlayer)
 { 
+	int drawntreasure = 0;
+	int cardDrawn;
+	int temphand[MAX_HAND];
+	int z = 0;
+
 	//while(drawntreasure<2){
 	while(drawntreasure < 4){//introduced bug
         	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
@@ -1258,8 +1263,9 @@ void adventurer(struct gameState *stae, int currentPlayer, int drawntreasure)
       return 0;
 }
 
-void council_room(struct gameState *state, int currentPlayer, int handPos)
+void council_room_play(struct gameState *state, int currentPlayer, int handPos)
 {
+	int i;
       //+4 Cards
 	for (i = 0; i < 4; i++)
         {	//commented out line below to introduce bug
@@ -1283,8 +1289,10 @@ void council_room(struct gameState *state, int currentPlayer, int handPos)
         return 0;
 }
     
-void smithy(struct gameState *state, int currentPlayer, int handPos)
-{      //+3 Cards
+void smithy_play(struct gameState *state, int currentPlayer, int handPos)
+{       
+	int i;
+	//+3 Cards
 	//for (i = 0; i < 3; i++)
 	for(i = 0; i < 2; i++) //draws 2 cards instead of 3 for a bug
         {
@@ -1296,7 +1304,7 @@ void smithy(struct gameState *state, int currentPlayer, int handPos)
       	return 0;
 }
 
-void outpost(struct gameState *state, int currentPlayer, int handPos)
+void outpost_play(struct gameState *state, int currentPlayer, int handPos)
 {
       //set outpost flag
       	//state->outpostPlayed++;
@@ -1307,7 +1315,7 @@ void outpost(struct gameState *state, int currentPlayer, int handPos)
         return 0;
 }
 
-void gardens(struct gameState *state, int currentPlayer, int handPos)
+void gardens_play(struct gameState *state, int currentPlayer, int handPos)
 {
 	return -1;
 }
@@ -1315,7 +1323,7 @@ void gardens(struct gameState *state, int currentPlayer, int handPos)
 
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
-	
+
   //if card is not trashed, added to Played pile 
   if (trashFlag < 1)
     {
