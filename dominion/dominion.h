@@ -129,7 +129,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
    1, others to 0 */
 
 //all below functions are created for assignment 2
-void adventurer_play(struct gameState *state, int currentPlayer);
+int adventurer_play(struct gameState *state, int currentPlayer);
 void smithy_play(struct gameState *state, int currentPlayer, int handPos);
 void gardens_play(struct gameState *state, int currentPlayer, int handPos);
 void outpost_play(struct gameState *state, int currentPlayer, int handPos);
